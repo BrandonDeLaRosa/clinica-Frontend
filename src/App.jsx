@@ -7,6 +7,7 @@ import PatientsList from './Component/PatientsList'
 import SingUp from './Component/SignUp'
 import Login from './Component/Login'
 import Home from './Component/Home'
+import PatientDetail from './Component/PacientDetail'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/signUp' element={<SingUp/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/patients' element={<PatientsList/>}/>
+          <Route path='/patient-detail/:id' element={<PatientDetail/>}/>
         </Routes>
       </div>
     </HashRouter>

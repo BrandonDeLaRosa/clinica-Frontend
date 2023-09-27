@@ -1,20 +1,21 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import img from '../assets/usuario.png'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import img from "../assets/usuario.png";
+import { Link } from "react-router-dom";
 
 const PatientsList = () => {
-
-  const [patients, setPatients] = useState([])
+  const [patients, setPatients] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:9000/api/v1/patients')
-      .then(res => setPatients(res.data))
-  }, [])
+    axios
+      .get("http://localhost:9000/api/v1/patients")
+      .then((res) => setPatients(res.data));
+  }, []);
 
   console.log(patients);
 
   return (
-    <div className='d-flex flex-column p-7 justify-content-center align-items-center'>
+    <div className="d-flex flex-column p-7 justify-content-center align-items-center">
       <h1>Lista de pacientes.</h1>
       {/* 
             <div className='d-flex justify-content-center align-items center mt-7'>
@@ -38,13 +39,28 @@ const PatientsList = () => {
                   <h2>Pacientes</h2>
                   <nav aria-label="breadcrumb">
                     <ol className="breadcrumb mb-0">
-                      <li className="breadcrumb-item"><a href="#" className="text-inherit">Inicio</a></li>
-                      <li className="breadcrumb-item active" aria-current="page">Pacientes</li>
+                      <li className="breadcrumb-item">
+                        <a href="#" className="text-inherit">
+                          Inicio
+                        </a>
+                      </li>
+                      <li
+                        className="breadcrumb-item active"
+                        aria-current="page"
+                      >
+                        Pacientes
+                      </li>
                     </ol>
                   </nav>
                 </div>
                 <div>
-                  <a href="add-product.html" className="btn" style={{ background: "#d6338463", color: "white" }}>Agregar paciente</a>
+                  <a
+                    href="add-product.html"
+                    className="btn"
+                    style={{ background: "#d6338463", color: "white" }}
+                  >
+                    Agregar paciente
+                  </a>
                 </div>
               </div>
             </div>
@@ -52,11 +68,19 @@ const PatientsList = () => {
           <div className="row ">
             <div className="col-xl-12 col-12 mb-5">
               <div className="card h-100 card-lg">
-                <div className="px-6 py-6 " style={{background:"rgba(214, 51, 132, 0.39)"}}>
+                <div
+                  className="px-6 py-6 "
+                  style={{ background: "rgba(214, 51, 132, 0.39)" }}
+                >
                   <div className="row justify-content-between">
                     <div className="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
                       <form className="d-flex" role="search">
-                        <input className="form-control" type="search" placeholder="Buscar paciente" aria-label="Buscar" />
+                        <input
+                          className="form-control"
+                          type="search"
+                          placeholder="Buscar paciente"
+                          aria-label="Buscar"
+                        />
                       </form>
                     </div>
                     <div className="col-lg-2 col-md-4 col-12">
@@ -77,12 +101,13 @@ const PatientsList = () => {
                           <th>
                             <div className="form-check">
                               {/* <input className="form-check-input" type="checkbox" value="" id="checkAll" /> */}
-                              <label className="form-check-label" htmlFor="checkAll">
-
-                              </label>
+                              <label
+                                className="form-check-label"
+                                htmlFor="checkAll"
+                              ></label>
                             </div>
                           </th>
-                          <th >Id</th >
+                          <th>Id</th>
                           <th>Foto</th>
                           <th>Nombre</th>
                           <th>Correo</th>
@@ -93,46 +118,63 @@ const PatientsList = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {
-                          patients.map(p => (
-                            <tr key={p.id} className='PatientListRow'>
-
+                        {patients.map((p) => (
+                          <Link key={p.id} className="PatientListRow">
+                              
                               <td>
                                 <div className="form-check">
-                                  <label className="form-check-label" htmlFor="productOne">
-                                  </label>
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="productOne"
+                                  ></label>
                                 </div>
                               </td>
                               <td>{p.id}</td>
                               <td>
-                                <img style={{width:"40px", height:"40px"}} src={img} alt="" />
+                                <img
+                                  style={{ width: "40px", height: "40px" }}
+                                  src={img}
+                                  alt=""
+                                />
                               </td>
-                              <td>{p.name} {p.lastname}</td>
+                              <td>
+                                {p.name} {p.lastname}
+                              </td>
 
-                              <td>{p.email }</td>
-                              <td>{p.phone }</td>
+                              <td>{p.email}</td>
+                              <td>{p.phone}</td>
                               <td>{p.location}</td>
                               <td>
                                 <div className="dropdown">
-                                  <a href="#" className="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <a
+                                    href="#"
+                                    className="text-reset"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                  >
                                     <i className="feather-icon icon-more-vertical fs-5"></i>
                                   </a>
                                   <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#"><i className="bi bi-trash me-3"></i>Delete</a></li>
-                                    <li><a className="dropdown-item" href="#"><i className="bi bi-pencil-square me-3 "></i>Edit</a>
+                                    <li>
+                                      <a className="dropdown-item" href="#">
+                                        <i className="bi bi-trash me-3"></i>
+                                        Delete
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a className="dropdown-item" href="#">
+                                        <i className="bi bi-pencil-square me-3 "></i>
+                                        Edit
+                                      </a>
                                     </li>
                                   </ul>
                                 </div>
                               </td>
-                            </tr>
-
-                          ))
-                        }
-
-
+                          
+                            </Link>
+                        ))}
                       </tbody>
                     </table>
-
                   </div>
                 </div>
                 {/* <div className=" border-top d-md-flex justify-content-between align-items-center px-6 py-6">
@@ -148,9 +190,7 @@ const PatientsList = () => {
                   </nav>
                 </div> */}
               </div>
-
             </div>
-
           </div>
         </div>
       </main>
