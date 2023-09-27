@@ -1,55 +1,67 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import img from '../assets/usuario.png'
 
 const PatientsList = () => {
+
+  const [patients, setPatients] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:9000/api/v1/patients')
+      .then(res => setPatients(res.data))
+  }, [])
+
+  console.log(patients);
+
   return (
     <div className='d-flex flex-column p-7 justify-content-center align-items-center'>
       <h1>Lista de pacientes.</h1>
       {/* 
             <div className='d-flex justify-content-center align-items center mt-7'>
-                <div class="list-group" style={{width:"90%"}}>
-                    <button type="button" class="list-group-item list-group-item-action active">
+                <div className="list-group" style={{width:"90%"}}>
+                    <button type="button" className="list-group-item list-group-item-action active">
                         Cras justo odio
                     </button>
-                    <button type="button" class="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
-                    <button type="button" class="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
-                    <button type="button" class="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
-                    <button type="button" class="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
+                    <button type="button" className="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
+                    <button type="button" className="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
+                    <button type="button" className="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
+                    <button type="button" className="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
                 </div>
             </div> */}
 
-      <main class="main-content-wrapper">
-        <div class="container">
-          <div class="row mb-8">
-            <div class="col-md-12">
-              <div class="d-md-flex justify-content-between align-items-center">
+      <main className="main-content-wrapper">
+        <div className="container">
+          <div className="row mb-8">
+            <div className="col-md-12">
+              <div className="d-md-flex justify-content-between align-items-center">
                 <div>
-                  <h2>Products</h2>
+                  <h2>Pacientes</h2>
                   <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0">
-                      <li class="breadcrumb-item"><a href="#" class="text-inherit">Dashboard</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Products</li>
+                    <ol className="breadcrumb mb-0">
+                      <li className="breadcrumb-item"><a href="#" className="text-inherit">Inicio</a></li>
+                      <li className="breadcrumb-item active" aria-current="page">Pacientes</li>
                     </ol>
                   </nav>
                 </div>
                 <div>
-                  <a href="add-product.html" class="btn" style={{background:"#d6338463", color:"white"}}>Add Product</a>
+                  <a href="add-product.html" className="btn" style={{ background: "#d6338463", color: "white" }}>Agregar paciente</a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row ">
-            <div class="col-xl-12 col-12 mb-5">
-              <div class="card h-100 card-lg">
-                <div class="px-6 py-6 ">
-                  <div class="row justify-content-between">
-                    <div class="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
-                      <form class="d-flex" role="search">
-                        <input class="form-control" type="search" placeholder="Search Products" aria-label="Search" />
+          <div className="row ">
+            <div className="col-xl-12 col-12 mb-5">
+              <div className="card h-100 card-lg">
+                <div className="px-6 py-6 " style={{background:"rgba(214, 51, 132, 0.39)"}}>
+                  <div className="row justify-content-between">
+                    <div className="col-lg-4 col-md-6 col-12 mb-2 mb-lg-0">
+                      <form className="d-flex" role="search">
+                        <input className="form-control" type="search" placeholder="Buscar paciente" aria-label="Buscar" />
                       </form>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-12">
-                      <select class="form-select">
-                        <option selected="">Status</option>
+                    <div className="col-lg-2 col-md-4 col-12">
+                      <select className="form-select">
+                        <option value="">Status</option>
                         <option value="1">Active</option>
                         <option value="2">Deactive</option>
                         <option value="3">Draft</option>
@@ -57,183 +69,84 @@ const PatientsList = () => {
                     </div>
                   </div>
                 </div>
-                <div class="card-body p-0">
-                  <div class="table-responsive">
-                    <table class="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
-                      <thead class="bg-light">
+                <div className="card-body p-0">
+                  <div className="table-responsive">
+                    <table className="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
+                      <thead className="bg-light">
                         <tr>
                           <th>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="checkAll" />
-                              <label class="form-check-label" for="checkAll">
+                            <div className="form-check">
+                              {/* <input className="form-check-input" type="checkbox" value="" id="checkAll" /> */}
+                              <label className="form-check-label" htmlFor="checkAll">
 
                               </label>
                             </div>
                           </th>
-                          <th>Image</th>
-                          <th>Proudct Name</th>
-                          <th>Category</th>
-                          <th>Status</th>
-                          <th>Price</th>
-                          <th>Create at</th>
+                          <th >Id</th >
+                          <th>Foto</th>
+                          <th>Nombre</th>
+                          <th>Correo</th>
+                          <th>Telefono</th>
+                          <th>Direccion</th>
+                          {/* <th>Create at</th> */}
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        {
+                          patients.map(p => (
+                            <tr key={p.id} className='PatientListRow'>
 
-                          <td>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="productOne" />
-                              <label class="form-check-label" for="productOne">
+                              <td>
+                                <div className="form-check">
+                                  <label className="form-check-label" htmlFor="productOne">
+                                  </label>
+                                </div>
+                              </td>
+                              <td>{p.id}</td>
+                              <td>
+                                <img style={{width:"40px", height:"40px"}} src={img} alt="" />
+                              </td>
+                              <td>{p.name} {p.lastname}</td>
 
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <a href="#!"> <img src="../assets/images/products/product-img-1.jpg" alt="" class="icon-shape icon-md" /></a>
-                          </td>
-                          <td><a href="#" class="text-reset">Haldiram's Sev Bhujia</a></td>
-                          <td>Snack & Munchies</td>
+                              <td>{p.email }</td>
+                              <td>{p.phone }</td>
+                              <td>{p.location}</td>
+                              <td>
+                                <div className="dropdown">
+                                  <a href="#" className="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i className="feather-icon icon-more-vertical fs-5"></i>
+                                  </a>
+                                  <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item" href="#"><i className="bi bi-trash me-3"></i>Delete</a></li>
+                                    <li><a className="dropdown-item" href="#"><i className="bi bi-pencil-square me-3 "></i>Edit</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>
 
-                          <td>
-                            <span class="badge bg-light-primary text-dark-primary">Active</span>
-                          </td>
-                          <td>$18.00</td>
-                          <td>24 Nov 2022</td>
-                          <td>
-                            <div class="dropdown">
-                              <a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="feather-icon icon-more-vertical fs-5"></i>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-trash me-3"></i>Delete</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-3 "></i>Edit</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
+                          ))
+                        }
 
-                          <td>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="productTwo" />
-                              <label class="form-check-label" for="productTwo">
-
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <a href="#!"> <img src="../assets/images/products/product-img-2.jpg" alt="" class="icon-shape icon-md" /></a>
-                          </td>
-                          <td><a href="#" class="text-reset">NutriChoice Digestive</a></td>
-                          <td>Bakery & Biscuits</td>
-
-                          <td>
-                            <span class="badge bg-light-primary text-dark-primary">Active</span>
-                          </td>
-                          <td>$24.00</td>
-                          <td>20 Nov 2022</td>
-                          <td>
-                            <div class="dropdown">
-                              <a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="feather-icon icon-more-vertical fs-5"></i>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-trash me-3"></i>Delete</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-3 "></i>Edit</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="productThree" />
-                              <label class="form-check-label" for="productThree">
-
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <a href="#!"> <img src="../assets/images/products/product-img-3.jpg" alt="" class="icon-shape icon-md" /></a>
-                          </td>
-                          <td><a href="#" class="text-reset">Cadbury 5 Star Chocolate</a></td>
-                          <td>Snack & Munchies</td>
-
-                          <td>
-                            <span class="badge bg-light-primary text-dark-primary">Active</span>
-                          </td>
-                          <td>$3.00</td>
-                          <td>14 Nov 2022</td>
-                          <td>
-                            <div class="dropdown">
-                              <a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="feather-icon icon-more-vertical fs-5"></i>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-trash me-3"></i>Delete</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-3 "></i>Edit</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="productFour" />
-                              <label class="form-check-label" for="productFour">
-
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <a href="#!"> <img src="../assets/images/products/product-img-4.jpg" alt="" class="icon-shape icon-md" /></a>
-                          </td>
-                          <td><a href="#" class="text-reset">Onion Flavour Potato</a></td>
-                          <td>Snack & Munchies</td>
-
-                          <td>
-                            <span class="badge bg-light-warning text-dark-warning">Draft</span>
-                          </td>
-                          <td>$13.00</td>
-                          <td>08 Nov 2022</td>
-                          <td>
-                            <div class="dropdown">
-                              <a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="feather-icon icon-more-vertical fs-5"></i>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-trash me-3"></i>Delete</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-3 "></i>Edit</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </td>
-                        </tr>
 
                       </tbody>
                     </table>
 
                   </div>
                 </div>
-                <div class=" border-top d-md-flex justify-content-between align-items-center px-6 py-6">
+                {/* <div className=" border-top d-md-flex justify-content-between align-items-center px-6 py-6">
                   <span>Showing 1 to 8 of 12 entries</span>
-                  <nav class="mt-2 mt-md-0">
-                    <ul class="pagination mb-0 ">
-                      <li class="page-item disabled"><a class="page-link " href="#!">Previous</a></li>
-                      <li class="page-item"><a class="page-link active" href="#!">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#!">Next</a></li>
+                  <nav className="mt-2 mt-md-0">
+                    <ul className="pagination mb-0 ">
+                      <li className="page-item disabled"><a className="page-link " href="#!">Previous</a></li>
+                      <li className="page-item"><a className="page-link active" href="#!">1</a></li>
+                      <li className="page-item"><a className="page-link" href="#!">2</a></li>
+                      <li className="page-item"><a className="page-link" href="#!">3</a></li>
+                      <li className="page-item"><a className="page-link" href="#!">Next</a></li>
                     </ul>
                   </nav>
-                </div>
+                </div> */}
               </div>
 
             </div>

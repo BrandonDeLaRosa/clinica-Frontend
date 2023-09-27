@@ -13,7 +13,7 @@ const Login = () => {
                             </div>
                             <div class="col-12 col-md-6 offset-lg-1 col-lg-4 order-lg-2 order-1">
                                 <div class="mb-lg-9 mb-5">
-                                    <h1 class="mb-1 h2 fw-bold">Bienvenida doctora.</h1>
+                                    <h1 class="mb-1 h2 fw-bold">Bienvenida doctora</h1>
                                     <p>Bienvenida a NutriApp, ingresa tus datos para iniciar sesión.</p>
                                 </div>
 
