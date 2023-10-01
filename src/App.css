@@ -6,9 +6,8 @@
 }
 
 /* !!  Patients List*/
-.PatientListRow{
-    cursor: pointer;
-    background-color: rgba(214, 51, 132, 0.39);
+.patientName:hover{
+    color: pink;
 }
 
 

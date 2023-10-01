@@ -2515,7 +2515,7 @@ progress {
   --fc-table-active-color: var(--fc-body-color);
   --fc-table-active-bg: var(--fc-gray-100);
   --fc-table-hover-color: var(--fc-body-color);
-  --fc-table-hover-bg: var(--fc-gray-100);
+  --fc-table-hover-bg: var(--fc-pink);
   border-color: var(--fc-table-border-color);
   color: var(--fc-table-color);
   margin-bottom: 1rem;

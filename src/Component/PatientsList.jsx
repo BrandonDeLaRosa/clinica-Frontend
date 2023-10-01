@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import img from "../assets/usuario.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { Table } from "react-bootstrap";
 
 const PatientsList = () => {
   const [patients, setPatients] = useState([]);
@@ -83,19 +84,19 @@ const PatientsList = () => {
                         />
                       </form>
                     </div>
-                    <div className="col-lg-2 col-md-4 col-12">
+                    {/* <div className="col-lg-2 col-md-4 col-12">
                       <select className="form-select">
                         <option value="">Status</option>
                         <option value="1">Active</option>
                         <option value="2">Deactive</option>
                         <option value="3">Draft</option>
                       </select>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className="card-body p-0">
                   <div className="table-responsive">
-                    <table className="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
+                    <Table className=Ttable table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
                       <thead className="bg-light">
                         <tr>
                           <th>
@@ -119,62 +120,49 @@ const PatientsList = () => {
                       </thead>
                       <tbody>
                         {patients.map((p) => (
-                          <Link key={p.id} className="PatientListRow">
-                              
+                          <tr key={p.id} >
                               <td>
                                 <div className="form-check">
                                   <label
-                                    className="form-check-label"
+                                    // className="form-check-label"
                                     htmlFor="productOne"
                                   ></label>
                                 </div>
                               </td>
                               <td>{p.id}</td>
                               <td>
-                                <img
+                              <i className="fa-regular fa-circle-user fs-3"
+                              style={{color:"pink"}}></i>
+
+                                {/* <img
                                   style={{ width: "40px", height: "40px" }}
                                   src={img}
                                   alt=""
-                                />
+                                /> */}
                               </td>
                               <td>
-                                {p.name} {p.lastname}
+                                <NavLink
+                                 to={`/patient-detail/${p.id}`}
+                                 style={{textDecoration:"none",
+                                        color:"black"
+                                 }}
+                                 >
+                                  {/* <p className="patientName txt-bold"> */}
+                                    {p.name} {p.lastname}
+                                  {/* </p>  */}
+                                  </NavLink>
                               </td>
 
                               <td>{p.email}</td>
                               <td>{p.phone}</td>
                               <td>{p.location}</td>
                               <td>
-                                <div className="dropdown">
-                                  <a
-                                    href="#"
-                                    className="text-reset"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                  >
-                                    <i className="feather-icon icon-more-vertical fs-5"></i>
-                                  </a>
-                                  <ul className="dropdown-menu">
-                                    <li>
-                                      <a className="dropdown-item" href="#">
-                                        <i className="bi bi-trash me-3"></i>
-                                        Delete
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a className="dropdown-item" href="#">
-                                        <i className="bi bi-pencil-square me-3 "></i>
-                                        Edit
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </td>
-                          
-                            </Link>
+                                
+                              </td>                         
+                            </tr>
                         ))}
                       </tbody>
-                    </table>
+                    </Table>
                   </div>
                 </div>
                 {/* <div className=" border-top d-md-flex justify-content-between align-items-center px-6 py-6">
