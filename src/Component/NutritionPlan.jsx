@@ -1,51 +1,40 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Table } from "react-bootstrap";
+import { format } from 'date-fns';
+import { useState } from "react";
+import NutritionPlanModal from "./NutritionPlanModal";
 
-const NutritionPlan = () => {
-    const {id} = useParams;
-    const [nutritionPlan, setNutritionPlan] = useState([]);
-    useEffect(() => {
-        axios.get(`http://localhost:9000/api/v1/patient/1`)
-        // axios.get(`http://localhost:9000/api/v1/patient-detail/1`)
-        .then((res) => setNutritionPlan(res.data))
-    },[])
-    console.log(nutritionPlan);
-
-    return (
-        <div>
-            <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
-        </div>
-    );
+const NutritionPlan = ({ data }) => {
+  const [show, setShow] = useState(false);
+  const [planSelected , setPlanSelected] = useState(null) 
+  // console.log(show);
+  console.log(planSelected);
+  return (
+    <div>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Plan nutricional</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            data.NutritionPlans?.map((p, index) => (
+              <tr key={index} style={{ cursor: "pointer" }} onClick={() => {
+                setShow(true);
+                setPlanSelected(p, index);
+              }}>
+                <td>{index + 1}</td>
+                <td>{format(new Date(p.createdAt), 'dd/MM/yyyy HH:mm:ss')}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </Table>
+      <NutritionPlanModal show={show} setShow={setShow} plan={planSelected}/>
+    </div>
+  );
 };
 
 export default NutritionPlan;
+
