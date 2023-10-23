@@ -18,18 +18,6 @@ const PatientsList = () => {
   return (
     <div className="d-flex flex-column p-7 justify-content-center align-items-center">
       <h1>Lista de pacientes.</h1>
-      {/* 
-            <div className='d-flex justify-content-center align-items center mt-7'>
-                <div className="list-group" style={{width:"90%"}}>
-                    <button type="button" className="list-group-item list-group-item-action active">
-                        Cras justo odio
-                    </button>
-                    <button type="button" className="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
-                    <button type="button" className="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
-                    <button type="button" className="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
-                    <button type="button" className="list-group-item list-group-item-action">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste magni quisquam omnis labore tempore quibusdam.</button>
-                </div>
-            </div> */}
 
       <main className="main-content-wrapper">
         <div className="container">
@@ -84,19 +72,11 @@ const PatientsList = () => {
                         />
                       </form>
                     </div>
-                    {/* <div className="col-lg-2 col-md-4 col-12">
-                      <select className="form-select">
-                        <option value="">Status</option>
-                        <option value="1">Active</option>
-                        <option value="2">Deactive</option>
-                        <option value="3">Draft</option>
-                      </select>
-                    </div> */}
                   </div>
                 </div>
                 <div className="card-body p-0">
                   <div className="table-responsive">
-                    <Table className=Ttable table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
+                    <Table className="Table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
                       <thead className="bg-light">
                         <tr>
                           <th>
@@ -124,13 +104,13 @@ const PatientsList = () => {
                               <td>
                                 <div className="form-check">
                                   <label
-                                    // className="form-check-label"
                                     htmlFor="productOne"
                                   ></label>
                                 </div>
                               </td>
                               <td>{p.id}</td>
                               <td>
+
                               <i className="fa-regular fa-circle-user fs-3"
                               style={{color:"pink"}}></i>
 
@@ -139,7 +119,9 @@ const PatientsList = () => {
                                   src={img}
                                   alt=""
                                 /> */}
+
                               </td>
+                              
                               <td>
                                 <NavLink
                                  to={`/patient-detail/${p.id}`}
@@ -147,9 +129,9 @@ const PatientsList = () => {
                                         color:"black"
                                  }}
                                  >
-                                  {/* <p className="patientName txt-bold"> */}
+                                  <p className="patientName mt-3">
                                     {p.name} {p.lastname}
-                                  {/* </p>  */}
+                                  </p> 
                                   </NavLink>
                               </td>
 
@@ -165,18 +147,7 @@ const PatientsList = () => {
                     </Table>
                   </div>
                 </div>
-                {/* <div className=" border-top d-md-flex justify-content-between align-items-center px-6 py-6">
-                  <span>Showing 1 to 8 of 12 entries</span>
-                  <nav className="mt-2 mt-md-0">
-                    <ul className="pagination mb-0 ">
-                      <li className="page-item disabled"><a className="page-link " href="#!">Previous</a></li>
-                      <li className="page-item"><a className="page-link active" href="#!">1</a></li>
-                      <li className="page-item"><a className="page-link" href="#!">2</a></li>
-                      <li className="page-item"><a className="page-link" href="#!">3</a></li>
-                      <li className="page-item"><a className="page-link" href="#!">Next</a></li>
-                    </ul>
-                  </nav>
-                </div> */}
+                
               </div>
             </div>
           </div>

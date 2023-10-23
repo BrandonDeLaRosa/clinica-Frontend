@@ -2,12 +2,12 @@
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import './theme.min.css'
+import PatientsList from './pages/PatientsList'
+import SingUp from './pages/SignUp'
+import Login from './pages/Login'
+import Home from './pages/Home'
+import PatientDetail from './pages/PacientDetail'
 import Header from './Component/Header'
-import PatientsList from './Component/PatientsList'
-import SingUp from './Component/SignUp'
-import Login from './Component/Login'
-import Home from './Component/Home'
-import PatientDetail from './Component/PacientDetail'
 
 
 function App() {
