@@ -9,9 +9,9 @@ const NutritionPlan = ({ data }) => {
   // console.log(show);
   console.log(planSelected);
   return (
-    <div>
-      <Table striped bordered hover>
-        <thead>
+    <div >
+      <Table striped bordered hover >
+        <thead style={{background:"pink"}}>
           <tr>
             <th>#</th>
             <th>Plan nutricional</th>

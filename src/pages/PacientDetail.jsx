@@ -17,7 +17,7 @@ const PatientDetail = () => {
         <div className="d-flex flex-column justify-content-center align-items-center">
             <h1>Detalles del paciente</h1>
 
-            <div className="mt-5" style={{ width: "85%" }}>
+            <div className="mt-5" style={{ width: "85%",background:"pink" }}>
                 <Tabs
                     defaultActiveKey="Plan de nutricion"
                     id="fill-tab-example"

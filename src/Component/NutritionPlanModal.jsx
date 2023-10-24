@@ -7,6 +7,8 @@ const NutritionPlanModal = ({ show, setShow, plan }) => {
 
     const [messure, setMessure] = useState(plan?.Messures[0])
     console.log(messure);
+    const medida = plan?.Messures[0]
+    console.log(medida);
     return (
         <div>
             <Modal show={show} size='xl' onHide={() => setShow(false)} className='animate__animated animate__backInDown'>
@@ -61,7 +63,7 @@ const NutritionPlanModal = ({ show, setShow, plan }) => {
                         </tbody>
                     </Table>
                 </Modal.Body>
-                <Accordion defaultActiveKey="0">
+                <Accordion defaultActiveKey="1">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Medidas correspondientes.</Accordion.Header>
                         <Accordion.Body>
@@ -77,10 +79,11 @@ const NutritionPlanModal = ({ show, setShow, plan }) => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{}</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        <td>{medida?.id? medida?.id : "N/A"}</td>
+                                        <td>{medida?.bonePercentage? medida?.bonePercentage : "N/A"}</td>
+                                        <td>{medida?.fatPercentage ? medida?.fatPercentage : "N/A"}</td>
+                                        <td>{medida?.musclePercentage ? medida?.musclePercentage : "N/A"}</td>
+                                        <td>{medida?.waterPercentage ? medida?.waterPercentage : "N/A"}</td>
                                     </tr>
 
                                 </tbody>

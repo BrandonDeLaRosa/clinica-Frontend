@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import img from "../assets/usuario.png";
 import { Link, NavLink } from "react-router-dom";
 import { Table } from "react-bootstrap";
+import AddPacientModal from "../Component/AddPacientModal";
 
 const PatientsList = () => {
+  const [modalShow, setModalShow] = useState(false);
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
@@ -43,13 +45,13 @@ const PatientsList = () => {
                   </nav>
                 </div>
                 <div>
-                  <a
-                    href="add-product.html"
+                  <button
                     className="btn"
                     style={{ background: "#d6338463", color: "white" }}
+                    onClick={() => setModalShow(true)}
                   >
                     Agregar paciente
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -94,13 +96,12 @@ const PatientsList = () => {
                           <th>Correo</th>
                           <th>Telefono</th>
                           <th>Direccion</th>
-                          {/* <th>Create at</th> */}
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
                         {patients.map((p) => (
-                          <tr key={p.id} >
+                          <tr key={p.id} className="rowColor">
                               <td>
                                 <div className="form-check">
                                   <label
@@ -153,6 +154,8 @@ const PatientsList = () => {
           </div>
         </div>
       </main>
+
+      <AddPacientModal modalShow={modalShow} setModalShow={setModalShow}/>
     </div>
   );
 };
